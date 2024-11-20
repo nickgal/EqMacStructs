@@ -32,9 +32,9 @@ public struct MsgStruct
         sb.AppendLine("using System.Runtime.InteropServices;");
         if (HasEnum)
         {
-            sb.AppendLine("using EqPackets.Messages.Enums;");
+            sb.AppendLine("using EqPackets.Data.Enums;");
         }
-        sb.AppendLine("\nnamespace EqPackets.Messages.Structs;\n");
+        sb.AppendLine("\nnamespace EqPackets.Data.Structs;\n");
         sb.AppendLine("/// <remarks>");
         sb.AppendLine($"/// Source name: `{Name}`");
         sb.AppendLine("/// </remarks>");

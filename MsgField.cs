@@ -79,7 +79,7 @@ public struct MsgField
         {
             sb.AppendLine($"    [MarshalAs(UnmanagedType.ByValArray, SizeConst = {Count})]");
         }
-        sb.Append($"    [FieldOffset({Offset})] {mappedType} {FieldName()};");
+        sb.Append($"    [FieldOffset({Offset})] public {mappedType} {FieldName()};");
         return sb.ToString();
     }
 

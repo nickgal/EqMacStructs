@@ -9,7 +9,7 @@ public struct MsgEnum
     public string ToCSharpString()
     {
         var sb = new StringBuilder();
-        sb.AppendLine("namespace EqPackets.Messages.Enums;\n");
+        sb.AppendLine("namespace EqPackets.Data.Enums;\n");
         sb.AppendLine("/// <remarks>");
         sb.AppendLine($"/// Source name: `{Name}`");
         sb.AppendLine("/// </remarks>");
