@@ -3,33 +3,25 @@
 Extract and format network message structs from the eqmac binary.
 
 ```c
-// __avLevel
-// 1 bytes
-// 1 fields
+// 1 field 1 byte
 struct __avLevel {
     /* 0000 */ unsigned char level;
     /* 0001 */
 };
 
-// AbilityMsg
-// 227 bytes
-// 1 fields
+// 1 field 227 bytes
 struct AbilityMsg {
     /* 0000 */ unsigned char ability[227];
     /* 0227 */
 };
 
-// alternateMsg
-// 256 bytes
-// 1 fields
+// 1 field 256 bytes
 struct alternateMsg {
     /* 0000 */ char desc[256];
     /* 0256 */
 };
 
-// AltexpUpMsg
-// 8 bytes
-// 3 fields
+// 3 fields 8 bytes
 struct AltexpUpMsg {
     /* 0000 */ unsigned long experience;
     /* 0004 */ short ability_pts;
@@ -37,18 +29,14 @@ struct AltexpUpMsg {
     /* 0008 */
 };
 
-// altGive
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct altGive {
     /* 0000 */ unsigned short target;
     /* 0004 */ int value;
     /* 0008 */
 };
 
-// AltTimerMsg
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct AltTimerMsg {
     /* 0000 */ int time_last_used;
     /* 0004 */ short ability;
@@ -56,9 +44,7 @@ struct AltTimerMsg {
     /* 0012 */
 };
 
-// anim_msg
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct anim_msg {
     /* 0000 */ unsigned short player_id;
     /* 0004 */ int anim;
@@ -66,18 +52,14 @@ struct anim_msg {
     /* 0012 */
 };
 
-// applyPoison
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct applyPoison {
     /* 0000 */ int inven_location;
     /* 0004 */ int success;
     /* 0008 */
 };
 
-// approve
-// 172 bytes
-// 5 fields
+// 5 fields 172 bytes
 struct approve {
     /* 0032 */ char name[64];
     /* 0096 */ int race;
@@ -87,18 +69,14 @@ struct approve {
     /* 0172 */
 };
 
-// __bandage
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct __bandage {
     /* 0000 */ unsigned short id;
     /* 0002 */ short amt;
     /* 0004 */
 };
 
-// _bugrpt
-// 1131 bytes
-// 7 fields
+// 7 fields 1131 bytes
 struct _bugrpt {
     /* 0000 */ char name[64];
     /* 0064 */ char account[32];
@@ -110,9 +88,7 @@ struct _bugrpt {
     /* 1131 */
 };
 
-// BazaarMsgItem
-// 76 bytes
-// 6 fields
+// 6 fields 76 bytes
 struct BazaarMsgItem {
     /* 0000 */ short msg_type;
     /* 0002 */ short qty;
@@ -123,36 +99,28 @@ struct BazaarMsgItem {
     /* 0076 */
 };
 
-// becomeNPCMsg
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct becomeNPCMsg {
     /* 0000 */ unsigned short id;
     /* 0004 */ int level;
     /* 0008 */
 };
 
-// beginTrade
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct beginTrade {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short source;
     /* 0004 */
 };
 
-// buffUp
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct buffUp {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned char level;
     /* 0004 */
 };
 
-// bzrBuyMsg
-// 80 bytes
-// 7 fields
+// 7 fields 80 bytes
 struct bzrBuyMsg {
     /* 0000 */ short msg_type;
     /* 0002 */ unsigned short bzr_merc_id;
@@ -164,18 +132,14 @@ struct bzrBuyMsg {
     /* 0080 */
 };
 
-// bzrGenericMsg
-// 20 bytes
-// 2 fields
+// 2 fields 20 bytes
 struct bzrGenericMsg {
     /* 0000 */ short msg_type;
     /* 0004 */ int value[4];
     /* 0020 */
 };
 
-// bzrItemArrayMsg
-// 644 bytes
-// 3 fields
+// 3 fields 644 bytes
 struct bzrItemArrayMsg {
     /* 0000 */ short msg_type;
     /* 0004 */ int bzrItem[80];
@@ -183,9 +147,7 @@ struct bzrItemArrayMsg {
     /* 0644 */
 };
 
-// bzrSearchMsg
-// 88 bytes
-// 10 fields
+// 10 fields 88 bytes
 struct bzrSearchMsg {
     /* 0000 */ short msg_type;
     /* 0002 */ unsigned short player_id;
@@ -200,9 +162,7 @@ struct bzrSearchMsg {
     /* 0088 */
 };
 
-// bzrItemUpdateMsg
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct bzrItemUpdateMsg {
     /* 0000 */ short msg_type;
     /* 0004 */ int item_id;
@@ -210,9 +170,7 @@ struct bzrItemUpdateMsg {
     /* 0012 */
 };
 
-// cancelDuel
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct cancelDuel {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short source;
@@ -220,18 +178,14 @@ struct cancelDuel {
     /* 0006 */
 };
 
-// canTrade
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct canTrade {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short source;
     /* 0004 */
 };
 
-// castspellmsg
-// 12 bytes
-// 5 fields
+// 5 fields 12 bytes
 struct castspellmsg {
     /* 0000 */ short which_slot;
     /* 0002 */ short spell_nbr;
@@ -241,9 +195,7 @@ struct castspellmsg {
     /* 0012 */
 };
 
-// chngAbility
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct chngAbility {
     /* 0000 */ unsigned short target;
     /* 0004 */ int ability;
@@ -251,26 +203,20 @@ struct chngAbility {
     /* 0012 */
 };
 
-// changeGuildLeader
-// 64 bytes
-// 1 fields
+// 1 field 64 bytes
 struct changeGuildLeader {
     /* 0000 */ char newLeader[64];
     /* 0064 */
 };
 
-// changeItem
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct changeItem {
     /* 0000 */ char name[64];
     /* 0064 */ int refnum;
     /* 0068 */
 };
 
-// changeMoney
-// 72 bytes
-// 3 fields
+// 3 fields 72 bytes
 struct changeMoney {
     /* 0000 */ char name[64];
     /* 0064 */ int type;
@@ -278,9 +224,7 @@ struct changeMoney {
     /* 0072 */
 };
 
-// changeWorldMsg
-// 752 bytes
-// 12 fields
+// 12 fields 752 bytes
 struct changeWorldMsg {
     /* 0000 */ ChangeWorld_State state;
     /* 0004 */ ChangeWorld_State status;
@@ -297,9 +241,7 @@ struct changeWorldMsg {
     /* 0752 */
 };
 
-// chestLock
-// 20 bytes
-// 6 fields
+// 6 fields 20 bytes
 struct chestLock {
     /* 0000 */ unsigned short id;
     /* 0004 */ unsigned long sernbr;
@@ -310,9 +252,7 @@ struct chestLock {
     /* 0020 */
 };
 
-// chngName
-// 196 bytes
-// 5 fields
+// 5 fields 196 bytes
 struct chngName {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -322,9 +262,7 @@ struct chngName {
     /* 0196 */
 };
 
-// chngForm
-// 20 bytes
-// 11 fields
+// 11 fields 20 bytes
 struct chngForm {
     /* 0000 */ unsigned short targetid;
     /* 0002 */ short race;
@@ -340,9 +278,7 @@ struct chngForm {
     /* 0020 */
 };
 
-// chngSkill
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct chngSkill {
     /* 0000 */ unsigned short target;
     /* 0004 */ int skill;
@@ -350,9 +286,7 @@ struct chngSkill {
     /* 0012 */
 };
 
-// clearSlot
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct clearSlot {
     /* 0000 */ unsigned short merchant;
     /* 0002 */ unsigned short me;
@@ -360,9 +294,7 @@ struct clearSlot {
     /* 0006 */
 };
 
-// clientUseCharge
-// 8 bytes
-// 4 fields
+// 4 fields 8 bytes
 struct clientUseCharge {
     /* 0000 */ unsigned long inv_refnum;
     /* 0004 */ char hunger;
@@ -371,18 +303,14 @@ struct clientUseCharge {
     /* 0008 */
 };
 
-// clientAddPlayer
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct clientAddPlayer {
     /* 0000 */ int crc32;
     /* 0004 */ char name[64];
     /* 0068 */
 };
 
-// client_spawn_npc
-// 116 bytes
-// 7 fields
+// 7 fields 116 bytes
 struct client_spawn_npc {
     /* 0000 */ char name[64];
     /* 0064 */ char filename[32];
@@ -394,18 +322,14 @@ struct client_spawn_npc {
     /* 0116 */
 };
 
-// clrFaction
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct clrFaction {
     /* 0000 */ char name[64];
     /* 0064 */ int factionnum;
     /* 0068 */
 };
 
-// consentVerify
-// 129 bytes
-// 3 fields
+// 3 fields 129 bytes
 struct consentVerify {
     /* 0000 */ char looter[64];
     /* 0064 */ char corpsename[64];
@@ -413,35 +337,27 @@ struct consentVerify {
     /* 0129 */
 };
 
-// controlNpc
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct controlNpc {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned char control;
     /* 0004 */
 };
 
-// corpseLogMsg
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct corpseLogMsg {
     /* 0000 */ char name[64];
     /* 0064 */ int logActive;
     /* 0068 */
 };
 
-// createGold
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct createGold {
     /* 0000 */ int amt;
     /* 0004 */
 };
 
-// createGuild
-// 208 bytes
-// 7 fields
+// 7 fields 208 bytes
 struct createGuild {
     /* 0000 */ int guild_faction;
     /* 0004 */ char guild_name[64];
@@ -453,9 +369,7 @@ struct createGuild {
     /* 0208 */
 };
 
-// createItem_MacMsg
-// 34 bytes
-// 3 fields
+// 3 fields 34 bytes
 struct createItem_MacMsg {
     /* 0000 */ char name[30];
     /* 0030 */ short recordNbr;
@@ -463,9 +377,7 @@ struct createItem_MacMsg {
     /* 0034 */
 };
 
-// deleteMsg
-// 8 bytes
-// 3 fields
+// 3 fields 8 bytes
 struct deleteMsg {
     /* 0000 */ unsigned short source;
     /* 0002 */ unsigned short id;
@@ -473,9 +385,7 @@ struct deleteMsg {
     /* 0008 */
 };
 
-// disarmMsg
-// 8 bytes
-// 4 fields
+// 4 fields 8 bytes
 struct disarmMsg {
     /* 0000 */ unsigned short source;
     /* 0002 */ unsigned short target;
@@ -484,18 +394,14 @@ struct disarmMsg {
     /* 0008 */
 };
 
-// disband
-// 128 bytes
-// 2 fields
+// 2 fields 128 bytes
 struct disband {
     /* 0000 */ char target[64];
     /* 0064 */ char name[64];
     /* 0128 */
 };
 
-// doCombine
-// 32 bytes
-// 7 fields
+// 7 fields 32 bytes
 struct doCombine {
     /* 0000 */ unsigned char type;
     /* 0002 */ short skill;
@@ -507,36 +413,28 @@ struct doCombine {
     /* 0032 */
 };
 
-// doHouseLock
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct doHouseLock {
     /* 0000 */ int status;
     /* 0004 */ unsigned short id;
-    /* 0000 */ long status;
+    /* 0012 */ long status_unk;
     /* 0012 */
 };
 
-// doHouseMoney
-// 16 bytes
-// 1 fields
+// 1 field 16 bytes
 struct doHouseMoney {
     /* 0000 */ long money[4];
     /* 0016 */
 };
 
-// doNpcCmd
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct doNpcCmd {
     /* 0000 */ unsigned short id;
     /* 0002 */ short index;
     /* 0004 */
 };
 
-// doPlayer
-// 129 bytes
-// 3 fields
+// 3 fields 129 bytes
 struct doPlayer {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -544,9 +442,7 @@ struct doPlayer {
     /* 0129 */
 };
 
-// doPlayer2
-// 162 bytes
-// 5 fields
+// 5 fields 162 bytes
 struct doPlayer2 {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -556,9 +452,7 @@ struct doPlayer2 {
     /* 0162 */
 };
 
-// dopostMsg
-// 1174 bytes
-// 6 fields
+// 6 fields 1174 bytes
 struct dopostMsg {
     /* 0000 */ unsigned short source;
     /* 0002 */ char time[16];
@@ -569,27 +463,21 @@ struct dopostMsg {
     /* 1174 */
 };
 
-// duel
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct duel {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short source;
     /* 0004 */
 };
 
-// emoteMsg
-// 1026 bytes
-// 2 fields
+// 2 fields 1026 bytes
 struct emoteMsg {
     /* 0000 */ short lang_type;
     /* 0002 */ char desc[1024];
     /* 1026 */
 };
 
-// endRt
-// 24 bytes
-// 6 fields
+// 6 fields 24 bytes
 struct endRt {
     /* 0000 */ long minx;
     /* 0004 */ long miny;
@@ -600,9 +488,7 @@ struct endRt {
     /* 0024 */
 };
 
-// EQ_Affect
-// 10 bytes
-// 7 fields
+// 7 fields 10 bytes
 struct EQ_Affect {
     /* 0000 */ unsigned char type;
     /* 0001 */ unsigned char level;
@@ -614,11 +500,9 @@ struct EQ_Affect {
     /* 0010 */
 };
 
-// EQ_Character
-// 3780 bytes
-// 6 fields
+// 6 fields 3780 bytes
 struct EQ_Character {
-    /* 0000 */ EQ_CharacterData3 Parent_Class[3444];
+    /* 0000 */ EQ_CharacterData3 Parent_Class;
     /* 3444 */ EQPlayer * me;
     /* 3448 */ EQ_Item * possessions[30];
     /* 3568 */ unsigned char spellcast_level;
@@ -627,9 +511,7 @@ struct EQ_Character {
     /* 3780 */
 };
 
-// EQ_CharacterData3
-// 3444 bytes
-// 68 fields
+// 68 fields 3444 bytes
 struct EQ_CharacterData3 {
     /* 0000 */ EQCVersionInfo version;
     /* 0002 */ char name[64];
@@ -702,11 +584,9 @@ struct EQ_CharacterData3 {
     /* 3444 */
 };
 
-// EQ_Container
-// 276 bytes
-// 7 fields
+// 7 fields 276 bytes
 struct EQ_Container {
-    /* 0000 */ EQ_Item Parent_Class[228];
+    /* 0000 */ EQ_Item Parent_Class;
     /* 0228 */ EQ_Item * items_held[10];
     /* 0268 */ unsigned char con_type;
     /* 0269 */ unsigned char capacity;
@@ -716,11 +596,9 @@ struct EQ_Container {
     /* 0276 */
 };
 
-// EQ_Equipment
-// 360 bytes
-// 54 fields
+// 54 fields 360 bytes
 struct EQ_Equipment {
-    /* 0000 */ EQ_Item Parent_Class[228];
+    /* 0000 */ EQ_Item Parent_Class;
     /* 0228 */ char STR;
     /* 0229 */ char STA;
     /* 0230 */ char CHA;
@@ -777,9 +655,7 @@ struct EQ_Equipment {
     /* 0360 */
 };
 
-// eq_exception
-// 92 bytes
-// 5 fields
+// 5 fields 92 bytes
 struct eq_exception {
     /* 0000 */ unsigned int oldNum;
     /* 0004 */ unsigned int newNum;
@@ -789,9 +665,7 @@ struct eq_exception {
     /* 0092 */
 };
 
-// EQ_Item
-// 228 bytes
-// 23 fields
+// 23 fields 228 bytes
 struct EQ_Item {
     /* 0000 */ char name[64];
     /* 0064 */ char loreName[80];
@@ -819,11 +693,9 @@ struct EQ_Item {
     /* 0228 */
 };
 
-// EQ_Note
-// 264 bytes
-// 5 fields
+// 5 fields 264 bytes
 struct EQ_Note {
-    /* 0000 */ EQ_Item Parent_Class[228];
+    /* 0000 */ EQ_Item Parent_Class;
     /* 0228 */ unsigned char notetype;
     /* 0229 */ unsigned char status;
     /* 0230 */ char language;
@@ -831,12 +703,10 @@ struct EQ_Note {
     /* 0264 */
 };
 
-// EQ_PC
-// 8452 bytes
-// 17 fields
+// 17 fields 8452 bytes
 struct EQ_PC {
-    /* 0000 */ EQ_Character Parent_Class[3780];
-    /* 0000 */ EQ_PCData4 Parent_Class[4592];
+    /* 0000 */ EQ_Character Parent_Class;
+    /* 3780 */ EQ_PCData4 Parent_Class;
     /* 8372 */ EQ_Item * vault[8];
     /* 8404 */ connection_t * my_socket;
     /* 8408 */ char * GuarBuffer;
@@ -855,9 +725,7 @@ struct EQ_PC {
     /* 8452 */
 };
 
-// EQ_PCData3
-// 4464 bytes
-// 59 fields
+// 59 fields 4464 bytes
 struct EQ_PCData3 {
     /* 0000 */ EQZoneIndex home_zone[5];
     /* 0020 */ float home_x[5];
@@ -921,9 +789,7 @@ struct EQ_PCData3 {
     /* 4464 */
 };
 
-// EQ_PCData4
-// 4592 bytes
-// 61 fields
+// 61 fields 4592 bytes
 struct EQ_PCData4 {
     /* 0000 */ EQZoneIndex home_zone[5];
     /* 0020 */ float home_x[5];
@@ -989,9 +855,7 @@ struct EQ_PCData4 {
     /* 4592 */
 };
 
-// eq_time
-// 6 bytes
-// 5 fields
+// 5 fields 6 bytes
 struct eq_time {
     /* 0000 */ unsigned char cur_hour;
     /* 0001 */ unsigned char cur_minute;
@@ -1001,9 +865,7 @@ struct eq_time {
     /* 0006 */
 };
 
-// EQClientSwitch
-// 44 bytes
-// 13 fields
+// 13 fields 44 bytes
 struct EQClientSwitch {
     /* 0000 */ char actor_tag[16];
     /* 0016 */ float beg_x;
@@ -1021,17 +883,13 @@ struct EQClientSwitch {
     /* 0044 */
 };
 
-// EQCVersionInfo
-// 2 bytes
-// 1 fields
+// 1 field 2 bytes
 struct EQCVersionInfo {
     /* 0000 */ VersionWord v;
     /* 0002 */
 };
 
-// EQItemList
-// 224 bytes
-// 19 fields
+// 19 fields 224 bytes
 struct EQItemList {
     /* 0000 */ EQItemList * prev;
     /* 0004 */ EQItemList * next;
@@ -1055,9 +913,7 @@ struct EQItemList {
     /* 0224 */
 };
 
-// EQMissile
-// 112 bytes
-// 16 fields
+// 16 fields 112 bytes
 struct EQMissile {
     /* 0000 */ unsigned char type;
     /* 0004 */ EQMissile * prev;
@@ -1078,9 +934,7 @@ struct EQMissile {
     /* 0112 */
 };
 
-// EQMissileHitinfo
-// 36 bytes
-// 13 fields
+// 13 fields 36 bytes
 struct EQMissileHitinfo {
     /* 0000 */ unsigned short defender_id;
     /* 0002 */ unsigned short attacker_id;
@@ -1098,9 +952,7 @@ struct EQMissileHitinfo {
     /* 0036 */
 };
 
-// EQMoneyList
-// 112 bytes
-// 17 fields
+// 17 fields 112 bytes
 struct EQMoneyList {
     /* 0000 */ EQMoneyList * prev;
     /* 0004 */ EQMoneyList * next;
@@ -1122,9 +974,7 @@ struct EQMoneyList {
     /* 0112 */
 };
 
-// EQNetPlayer
-// 224 bytes
-// 44 fields
+// 44 fields 224 bytes
 struct EQNetPlayer {
     /* 0000 */ unsigned int random_dontuse;
     /* 0004 */ netphysicsinfo netphysics;
@@ -1173,9 +1023,7 @@ struct EQNetPlayer {
     /* 0224 */
 };
 
-// EQObject
-// 88 bytes
-// 12 fields
+// 12 fields 88 bytes
 struct EQObject {
     /* 0000 */ unsigned char type;
     /* 0004 */ EQObject * prev;
@@ -1192,9 +1040,7 @@ struct EQObject {
     /* 0088 */
 };
 
-// EQPlayer
-// 352 bytes
-// 60 fields
+// 60 fields 352 bytes
 struct EQPlayer {
     /* 0000 */ unsigned char type;
     /* 0001 */ char name[64];
@@ -1259,9 +1105,7 @@ struct EQPlayer {
     /* 0352 */
 };
 
-// EQPlayerDeath
-// 20 bytes
-// 8 fields
+// 8 fields 20 bytes
 struct EQPlayerDeath {
     /* 0000 */ unsigned short victim_id;
     /* 0002 */ unsigned short killer_id;
@@ -1274,9 +1118,7 @@ struct EQPlayerDeath {
     /* 0020 */
 };
 
-// EQSuccessfulHit
-// 24 bytes
-// 8 fields
+// 8 fields 24 bytes
 struct EQSuccessfulHit {
     /* 0000 */ unsigned short defender_id;
     /* 0002 */ unsigned short attacker_id;
@@ -1289,18 +1131,14 @@ struct EQSuccessfulHit {
     /* 0024 */
 };
 
-// EQSwitchState
-// 2 bytes
-// 2 fields
+// 2 fields 2 bytes
 struct EQSwitchState {
     /* 0000 */ unsigned char id;
     /* 0001 */ unsigned char state;
     /* 0002 */
 };
 
-// EQToggleSwitch
-// 8 bytes
-// 4 fields
+// 4 fields 8 bytes
 struct EQToggleSwitch {
     /* 0000 */ unsigned char id;
     /* 0002 */ short picking_skill;
@@ -1309,53 +1147,41 @@ struct EQToggleSwitch {
     /* 0008 */
 };
 
-// expendItemCharge
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct expendItemCharge {
     /* 0000 */ int item_class;
     /* 0004 */ int record_nbr;
     /* 0008 */
 };
 
-// expGain
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct expGain {
     /* 0000 */ unsigned short id;
     /* 0004 */ int exp;
     /* 0008 */
 };
 
-// expGive
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct expGive {
     /* 0000 */ unsigned short target;
     /* 0004 */ int value;
     /* 0008 */
 };
 
-// expSet
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct expSet {
     /* 0000 */ unsigned short target;
     /* 0004 */ float level;
     /* 0008 */
 };
 
-// expUpMsg
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct expUpMsg {
     /* 0000 */ unsigned long experience;
     /* 0004 */
 };
 
-// faction_MacMsg
-// 382 bytes
-// 3 fields
+// 3 fields 382 bytes
 struct faction_MacMsg {
     /* 0000 */ short faction;
     /* 0002 */ char name[60];
@@ -1363,9 +1189,7 @@ struct faction_MacMsg {
     /* 0382 */
 };
 
-// feignMsg
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct feignMsg {
     /* 0000 */ unsigned short id;
     /* 0002 */ unsigned short fake;
@@ -1373,18 +1197,14 @@ struct feignMsg {
     /* 0006 */
 };
 
-// follow
-// 128 bytes
-// 2 fields
+// 2 fields 128 bytes
 struct follow {
     /* 0000 */ char target[64];
     /* 0064 */ char name[64];
     /* 0128 */
 };
 
-// foodItem
-// 16 bytes
-// 4 fields
+// 4 fields 16 bytes
 struct foodItem {
     /* 0000 */ int from;
     /* 0004 */ int to;
@@ -1393,18 +1213,14 @@ struct foodItem {
     /* 0016 */
 };
 
-// forceTitle
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct forceTitle {
     /* 0000 */ char target[64];
     /* 0064 */ int cmd;
     /* 0068 */
 };
 
-// fwaterMsg
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct fwaterMsg {
     /* 0000 */ short hunger;
     /* 0002 */ short thirst;
@@ -1412,9 +1228,7 @@ struct fwaterMsg {
     /* 0006 */
 };
 
-// getStats
-// 268 bytes
-// 4 fields
+// 4 fields 268 bytes
 struct getStats {
     /* 0000 */ char name[64];
     /* 0064 */ short level;
@@ -1423,9 +1237,7 @@ struct getStats {
     /* 0268 */
 };
 
-// gmQuest
-// 28 bytes
-// 7 fields
+// 7 fields 28 bytes
 struct gmQuest {
     /* 0000 */ unsigned short target;
     /* 0004 */ int experience;
@@ -1437,9 +1249,7 @@ struct gmQuest {
     /* 0028 */
 };
 
-// guild_dat
-// 96 bytes
-// 9 fields
+// 9 fields 96 bytes
 struct guild_dat {
     /* 0000 */ int faction_num;
     /* 0004 */ char name[64];
@@ -1453,45 +1263,35 @@ struct guild_dat {
     /* 0096 */
 };
 
-// guildAdded
-// 100 bytes
-// 2 fields
+// 2 fields 100 bytes
 struct guildAdded {
     /* 0000 */ int guild_index;
     /* 0004 */ guild_dat guild_entry;
     /* 0100 */
 };
 
-// guildCRCmsg
-// 49156 bytes
-// 2 fields
+// 2 fields 49156 bytes
 struct guildCRCmsg {
     /* 0000 */ int crc32;
     /* 0004 */ guild_dat gData[512];
     /* 49156 */
 };
 
-// guildExists
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct guildExists {
     /* 0000 */ int guild;
     /* 0004 */ int exists;
     /* 0008 */
 };
 
-// guildInfo
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct guildInfo {
     /* 0000 */ int num;
     /* 0004 */ guild_dat name;
     /* 0068 */
 };
 
-// guildInvite
-// 136 bytes
-// 4 fields
+// 4 fields 136 bytes
 struct guildInvite {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -1500,17 +1300,13 @@ struct guildInvite {
     /* 0136 */
 };
 
-// guildList
-// 34820 bytes
-// 1 fields
+// 1 field 34820 bytes
 struct guildList {
     /* 0000 */ int numrecs;
     /* 34820 */
 };
 
-// guildmotdSet
-// 580 bytes
-// 3 fields
+// 3 fields 580 bytes
 struct guildmotdSet {
     /* 0000 */ char name[64];
     /* 0064 */ int guild;
@@ -1518,18 +1314,14 @@ struct guildmotdSet {
     /* 0580 */
 };
 
-// guildNameEntry
-// 36 bytes
-// 2 fields
+// 2 fields 36 bytes
 struct guildNameEntry {
     /* 0000 */ char name[32];
     /* 0032 */ int status;
     /* 0036 */
 };
 
-// guildPeace
-// 140 bytes
-// 5 fields
+// 5 fields 140 bytes
 struct guildPeace {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -1539,9 +1331,7 @@ struct guildPeace {
     /* 0140 */
 };
 
-// guildRemove
-// 136 bytes
-// 4 fields
+// 4 fields 136 bytes
 struct guildRemove {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -1550,18 +1340,14 @@ struct guildRemove {
     /* 0136 */
 };
 
-// guildRename
-// 128 bytes
-// 2 fields
+// 2 fields 128 bytes
 struct guildRename {
     /* 0000 */ char newGuildName[64];
     /* 0064 */ char oldGuildName[64];
     /* 0128 */
 };
 
-// guildReply
-// 136 bytes
-// 4 fields
+// 4 fields 136 bytes
 struct guildReply {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -1570,9 +1356,7 @@ struct guildReply {
     /* 0136 */
 };
 
-// guildStatus
-// 136 bytes
-// 4 fields
+// 4 fields 136 bytes
 struct guildStatus {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -1581,17 +1365,13 @@ struct guildStatus {
     /* 0136 */
 };
 
-// guildWar
-// 140 bytes
-// 1 fields
+// 1 field 140 bytes
 struct guildWar {
-    /* 0000 */ guildPeace Parent_Class[140];
+    /* 0000 */ guildPeace Parent_Class;
     /* 0140 */
 };
 
-// hitptMsg
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct hitptMsg {
     /* 0000 */ unsigned short id;
     /* 0004 */ int hp;
@@ -1599,18 +1379,14 @@ struct hitptMsg {
     /* 0012 */
 };
 
-// hpChgMsg
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct hpChgMsg {
     /* 0000 */ unsigned short id;
     /* 0004 */ int cur_hp;
     /* 0008 */
 };
 
-// inspect
-// 1744 bytes
-// 6 fields
+// 6 fields 1744 bytes
 struct inspect {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short source;
@@ -1621,18 +1397,14 @@ struct inspect {
     /* 1744 */
 };
 
-// InspectItem
-// 66 bytes
-// 2 fields
+// 2 fields 66 bytes
 struct InspectItem {
     /* 0000 */ short item_id;
     /* 0002 */ char item_name[64];
     /* 0066 */
 };
 
-// invite
-// 193 bytes
-// 4 fields
+// 4 fields 193 bytes
 struct invite {
     /* 0000 */ char target[64];
     /* 0064 */ char name[64];
@@ -1641,18 +1413,14 @@ struct invite {
     /* 0193 */
 };
 
-// item_find_message
-// 84 bytes
-// 2 fields
+// 2 fields 84 bytes
 struct item_find_message {
     /* 0000 */ int itemNumber;
     /* 0004 */ char partialName[80];
     /* 0084 */
 };
 
-// joinStatus
-// 129 bytes
-// 3 fields
+// 3 fields 129 bytes
 struct joinStatus {
     /* 0000 */ char target[64];
     /* 0064 */ char name[64];
@@ -1660,9 +1428,7 @@ struct joinStatus {
     /* 0129 */
 };
 
-// keynumMsg
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct keynumMsg {
     /* 0000 */ int keynum;
     /* 0004 */ short recnum;
@@ -1670,26 +1436,20 @@ struct keynumMsg {
     /* 0012 */
 };
 
-// KunarkApprovedMsg
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct KunarkApprovedMsg {
     /* 0000 */ int status;
     /* 0004 */
 };
 
-// kunarkMsg
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct kunarkMsg {
     /* 0000 */ char name[64];
     /* 0064 */ int status;
     /* 0068 */
 };
 
-// launchSpellInfo
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct launchSpellInfo {
     /* 0000 */ int slot;
     /* 0004 */ int spell;
@@ -1697,27 +1457,21 @@ struct launchSpellInfo {
     /* 0012 */
 };
 
-// leave_guildmaster
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct leave_guildmaster {
     /* 0000 */ unsigned short guildmaster;
     /* 0002 */ unsigned short me;
     /* 0004 */
 };
 
-// leave_merchant
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct leave_merchant {
     /* 0000 */ unsigned short merchant;
     /* 0002 */ unsigned short me;
     /* 0004 */
 };
 
-// levelUpMsg
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct levelUpMsg {
     /* 0000 */ int level;
     /* 0004 */ int highestlevel;
@@ -1725,35 +1479,27 @@ struct levelUpMsg {
     /* 0012 */
 };
 
-// LFGMsg
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct LFGMsg {
     /* 0000 */ unsigned char name[64];
     /* 0064 */ int status;
     /* 0068 */
 };
 
-// LFGMsg2
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct LFGMsg2 {
     /* 0000 */ unsigned short id;
     /* 0004 */ int status;
     /* 0008 */
 };
 
-// lockmsg
-// 2 bytes
-// 1 fields
+// 1 field 2 bytes
 struct lockmsg {
     /* 0000 */ unsigned short id;
     /* 0002 */
 };
 
-// loginKey
-// 386 bytes
-// 5 fields
+// 5 fields 386 bytes
 struct loginKey {
     /* 0000 */ char name[64];
     /* 0064 */ char pword[32];
@@ -1763,9 +1509,7 @@ struct loginKey {
     /* 0386 */
 };
 
-// LoginMsg
-// 200 bytes
-// 5 fields
+// 5 fields 200 bytes
 struct LoginMsg {
     /* 0000 */ char unistring[186];
     /* 0186 */ short port;
@@ -1775,17 +1519,13 @@ struct LoginMsg {
     /* 0200 */
 };
 
-// logshoweq
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct logshoweq {
     /* 0000 */ int value;
     /* 0004 */
 };
 
-// loot_msg
-// 12 bytes
-// 4 fields
+// 4 fields 12 bytes
 struct loot_msg {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short me;
@@ -1794,27 +1534,21 @@ struct loot_msg {
     /* 0012 */
 };
 
-// makeNewLeaderMsg
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct makeNewLeaderMsg {
     /* 0000 */ int guild_faction;
     /* 0004 */ char new_leader[64];
     /* 0068 */
 };
 
-// ManaMsg
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct ManaMsg {
     /* 0000 */ unsigned short player_id;
     /* 0002 */ short my_mana;
     /* 0004 */
 };
 
-// materialChange
-// 12 bytes
-// 4 fields
+// 4 fields 12 bytes
 struct materialChange {
     /* 0000 */ unsigned short id;
     /* 0002 */ unsigned char location;
@@ -1823,17 +1557,13 @@ struct materialChange {
     /* 0012 */
 };
 
-// meditateMsg
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct meditateMsg {
     /* 0000 */ int meditating;
     /* 0004 */
 };
 
-// memSpellBook
-// 524 bytes
-// 4 fields
+// 4 fields 524 bytes
 struct memSpellBook {
     /* 0000 */ int slot;
     /* 0004 */ int spell;
@@ -1842,9 +1572,7 @@ struct memSpellBook {
     /* 0524 */
 };
 
-// modInven
-// 1156 bytes
-// 4 fields
+// 4 fields 1156 bytes
 struct modInven {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -1853,9 +1581,7 @@ struct modInven {
     /* 1156 */
 };
 
-// modMoney
-// 136 bytes
-// 4 fields
+// 4 fields 136 bytes
 struct modMoney {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -1864,9 +1590,7 @@ struct modMoney {
     /* 0136 */
 };
 
-// modRt
-// 40 bytes
-// 11 fields
+// 11 fields 40 bytes
 struct modRt {
     /* 0000 */ short route;
     /* 0002 */ char terrain;
@@ -1882,17 +1606,13 @@ struct modRt {
     /* 0040 */
 };
 
-// ModulationMsg
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct ModulationMsg {
     /* 0000 */ unsigned int fTimeLeft;
     /* 0004 */
 };
 
-// money_MacMsg
-// 56 bytes
-// 5 fields
+// 5 fields 56 bytes
 struct money_MacMsg {
     /* 0000 */ char name[40];
     /* 0040 */ long platinum;
@@ -1902,18 +1622,14 @@ struct money_MacMsg {
     /* 0056 */
 };
 
-// motdSet
-// 576 bytes
-// 2 fields
+// 2 fields 576 bytes
 struct motdSet {
     /* 0000 */ char name[64];
     /* 0064 */ char message[512];
     /* 0576 */
 };
 
-// moveItem
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct moveItem {
     /* 0000 */ int from;
     /* 0004 */ int to;
@@ -1921,9 +1637,7 @@ struct moveItem {
     /* 0012 */
 };
 
-// moveMoney
-// 20 bytes
-// 5 fields
+// 5 fields 20 bytes
 struct moveMoney {
     /* 0000 */ int from;
     /* 0004 */ int to;
@@ -1933,18 +1647,14 @@ struct moveMoney {
     /* 0020 */
 };
 
-// msg_delIlist
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct msg_delIlist {
     /* 0000 */ unsigned long sernbr;
     /* 0004 */ unsigned short id;
     /* 0008 */
 };
 
-// msg_ppoint
-// 44 bytes
-// 4 fields
+// 4 fields 44 bytes
 struct msg_ppoint {
     /* 0000 */ char name[32];
     /* 0032 */ float x;
@@ -1953,9 +1663,7 @@ struct msg_ppoint {
     /* 0044 */
 };
 
-// msg_who_req
-// 140 bytes
-// 8 fields
+// 8 fields 140 bytes
 struct msg_who_req {
     /* 0000 */ char name[64];
     /* 0064 */ short race;
@@ -1968,18 +1676,14 @@ struct msg_who_req {
     /* 0140 */
 };
 
-// msgAddPlayer
-// 356 bytes
-// 2 fields
+// 2 fields 356 bytes
 struct msgAddPlayer {
     /* 0000 */ int crc32;
     /* 0004 */ EQPlayer playerdata;
     /* 0356 */
 };
 
-// msgChangePCAffect
-// 20 bytes
-// 4 fields
+// 4 fields 20 bytes
 struct msgChangePCAffect {
     /* 0000 */ unsigned short id;
     /* 0002 */ EQ_Affect affect;
@@ -1988,18 +1692,14 @@ struct msgChangePCAffect {
     /* 0020 */
 };
 
-// msgCompData
-// 131074 bytes
-// 2 fields
+// 2 fields 131074 bytes
 struct msgCompData {
     /* 0000 */ short num_items;
     /* 0002 */ char compData[131072];
     /* 131074 */
 };
 
-// msgCorpseXYZ
-// 16 bytes
-// 4 fields
+// 4 fields 16 bytes
 struct msgCorpseXYZ {
     /* 0000 */ unsigned short id;
     /* 0004 */ float x;
@@ -2008,9 +1708,7 @@ struct msgCorpseXYZ {
     /* 0016 */
 };
 
-// msgDoAttack
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct msgDoAttack {
     /* 0000 */ unsigned short id;
     /* 0004 */ int slot;
@@ -2018,9 +1716,7 @@ struct msgDoAttack {
     /* 0012 */
 };
 
-// msgNpcReaction
-// 24 bytes
-// 7 fields
+// 7 fields 24 bytes
 struct msgNpcReaction {
     /* 0000 */ unsigned short id;
     /* 0002 */ unsigned short npcid;
@@ -2032,9 +1728,7 @@ struct msgNpcReaction {
     /* 0024 */
 };
 
-// MsgPetInfo
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct MsgPetInfo {
     /* 0000 */ unsigned short Owner_ID;
     /* 0002 */ unsigned short Pet_ID;
@@ -2042,9 +1736,7 @@ struct MsgPetInfo {
     /* 0006 */
 };
 
-// msgGetSafeCoords
-// 88 bytes
-// 7 fields
+// 7 fields 88 bytes
 struct msgGetSafeCoords {
     /* 0000 */ char name[64];
     /* 0064 */ EQZoneIndex zoneid;
@@ -2056,9 +1748,7 @@ struct msgGetSafeCoords {
     /* 0088 */
 };
 
-// msgGiveitem
-// 2180 bytes
-// 3 fields
+// 3 fields 2180 bytes
 struct msgGiveitem {
     /* 0000 */ char source[64];
     /* 0064 */ char tgt[64];
@@ -2066,9 +1756,7 @@ struct msgGiveitem {
     /* 2180 */
 };
 
-// msgLimboMoney
-// 16 bytes
-// 4 fields
+// 4 fields 16 bytes
 struct msgLimboMoney {
     /* 0000 */ long plat;
     /* 0004 */ long gold;
@@ -2077,26 +1765,20 @@ struct msgLimboMoney {
     /* 0016 */
 };
 
-// msgQueryExp
-// 64 bytes
-// 1 fields
+// 1 field 64 bytes
 struct msgQueryExp {
     /* 0000 */ char name[64];
     /* 0064 */
 };
 
-// msgSkillImprove
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct msgSkillImprove {
     /* 0000 */ int skillnum;
     /* 0004 */ int skillvalue;
     /* 0008 */
 };
 
-// msgTeleportPC
-// 24 bytes
-// 6 fields
+// 6 fields 24 bytes
 struct msgTeleportPC {
     /* 0000 */ EQZoneIndex zoneid;
     /* 0004 */ float x;
@@ -2107,18 +1789,14 @@ struct msgTeleportPC {
     /* 0024 */
 };
 
-// msgTraceLogin
-// 96 bytes
-// 2 fields
+// 2 fields 96 bytes
 struct msgTraceLogin {
     /* 0000 */ char stationNum[32];
     /* 0032 */ char characterName[64];
     /* 0096 */
 };
 
-// newSurname
-// 100 bytes
-// 3 fields
+// 3 fields 100 bytes
 struct newSurname {
     /* 0000 */ char name[64];
     /* 0064 */ int status;
@@ -2126,9 +1804,7 @@ struct newSurname {
     /* 0100 */
 };
 
-// newtext
-// 2184 bytes
-// 6 fields
+// 6 fields 2184 bytes
 struct newtext {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -2139,9 +1815,7 @@ struct newtext {
     /* 2184 */
 };
 
-// netphysicsinfo
-// 13 bytes
-// 7 fields
+// 7 fields 13 bytes
 struct netphysicsinfo {
     /* 0000 */ char accel;
     /* 0001 */ unsigned char h;
@@ -2153,18 +1827,14 @@ struct netphysicsinfo {
     /* 0013 */
 };
 
-// NoNameApprovalMsg
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct NoNameApprovalMsg {
     /* 0000 */ char name[64];
     /* 0064 */ int status;
     /* 0068 */
 };
 
-// npcCheckItems
-// 1204 bytes
-// 7 fields
+// 7 fields 1204 bytes
 struct npcCheckItems {
     /* 0000 */ unsigned short id;
     /* 0004 */ int plat;
@@ -2176,18 +1846,14 @@ struct npcCheckItems {
     /* 1204 */
 };
 
-// npcCheckItemsZone
-// 260 bytes
-// 2 fields
+// 2 fields 260 bytes
 struct npcCheckItemsZone {
     /* 0000 */ int cmd;
     /* 0004 */ char szFilter[256];
     /* 0260 */
 };
 
-// NPCMoney
-// 20 bytes
-// 6 fields
+// 6 fields 20 bytes
 struct NPCMoney {
     /* 0000 */ unsigned short sendId;
     /* 0002 */ unsigned short targetId;
@@ -2198,17 +1864,13 @@ struct NPCMoney {
     /* 0020 */
 };
 
-// OverrideTimerMessage
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct OverrideTimerMessage {
     /* 0000 */ int override_timer;
     /* 0004 */
 };
 
-// old_guild_dat
-// 144 bytes
-// 11 fields
+// 11 fields 144 bytes
 struct old_guild_dat {
     /* 0000 */ int faction_num;
     /* 0004 */ char name[64];
@@ -2224,9 +1886,7 @@ struct old_guild_dat {
     /* 0144 */
 };
 
-// pcGuildMsg
-// 72 bytes
-// 3 fields
+// 3 fields 72 bytes
 struct pcGuildMsg {
     /* 0000 */ int guild;
     /* 0004 */ int status;
@@ -2234,9 +1894,7 @@ struct pcGuildMsg {
     /* 0072 */
 };
 
-// PCSaveMsg
-// 8460 bytes
-// 3 fields
+// 3 fields 8460 bytes
 struct PCSaveMsg {
     /* 0000 */ int crc32;
     /* 0004 */ EQ_PC pcdata;
@@ -2244,27 +1902,21 @@ struct PCSaveMsg {
     /* 8460 */
 };
 
-// permaKillMsg
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct permaKillMsg {
     /* 0000 */ unsigned short id;
     /* 0004 */ int delfile;
     /* 0008 */
 };
 
-// pet_command_message
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct pet_command_message {
     /* 0000 */ PetCommandType command;
     /* 0004 */ unsigned short targetId;
     /* 0008 */
 };
 
-// petitionQstatus
-// 184 bytes
-// 9 fields
+// 9 fields 184 bytes
 struct petitionQstatus {
     /* 0000 */ int id_num;
     /* 0004 */ int urgency;
@@ -2278,9 +1930,7 @@ struct petitionQstatus {
     /* 0184 */
 };
 
-// petitionQtype
-// 2220 bytes
-// 15 fields
+// 15 fields 2220 bytes
 struct petitionQtype {
     /* 0000 */ int id_num;
     /* 0004 */ int urgency;
@@ -2300,9 +1950,7 @@ struct petitionQtype {
     /* 2220 */
 };
 
-// physicsinfo
-// 48 bytes
-// 12 fields
+// 12 fields 48 bytes
 struct physicsinfo {
     /* 0000 */ float x;
     /* 0004 */ float y;
@@ -2319,9 +1967,7 @@ struct physicsinfo {
     /* 0048 */
 };
 
-// PINFO
-// 1620 bytes
-// 18 fields
+// 18 fields 1620 bytes
 struct PINFO {
     /* 0000 */ char name[640];
     /* 0640 */ unsigned char level[10];
@@ -2344,43 +1990,33 @@ struct PINFO {
     /* 1620 */
 };
 
-// prohibExe
-// 4098 bytes
-// 1 fields
+// 1 field 4098 bytes
 struct prohibExe {
     /* 0000 */ short num;
     /* 4098 */
 };
 
-// publicKeyMsg
-// 544 bytes
-// 1 fields
+// 1 field 544 bytes
 struct publicKeyMsg {
     /* 0000 */ vlMsg vl[2];
     /* 0544 */
 };
 
-// _readyTrade
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct _readyTrade {
     /* 0000 */ unsigned short id;
     /* 0002 */ unsigned char flag;
     /* 0004 */
 };
 
-// randomMsg
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct randomMsg {
     /* 0000 */ int from;
     /* 0004 */ int to;
     /* 0008 */
 };
 
-// ranReturnMsg
-// 76 bytes
-// 4 fields
+// 4 fields 76 bytes
 struct ranReturnMsg {
     /* 0000 */ int from;
     /* 0004 */ int to;
@@ -2389,9 +2025,7 @@ struct ranReturnMsg {
     /* 0076 */
 };
 
-// refuseTrade
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct refuseTrade {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short source;
@@ -2399,9 +2033,7 @@ struct refuseTrade {
     /* 0006 */
 };
 
-// reportText
-// 5248 bytes
-// 3 fields
+// 3 fields 5248 bytes
 struct reportText {
     /* 0000 */ char name[64];
     /* 0064 */ char buffer[5120];
@@ -2409,9 +2041,7 @@ struct reportText {
     /* 5248 */
 };
 
-// req_bzr_merchant
-// 16 bytes
-// 4 fields
+// 4 fields 16 bytes
 struct req_bzr_merchant {
     /* 0000 */ unsigned short bzr_merc_id;
     /* 0004 */ int item_id;
@@ -2420,9 +2050,7 @@ struct req_bzr_merchant {
     /* 0016 */
 };
 
-// req_merchant
-// 12 bytes
-// 4 fields
+// 4 fields 12 bytes
 struct req_merchant {
     /* 0000 */ unsigned short merchant;
     /* 0002 */ unsigned short me;
@@ -2431,9 +2059,7 @@ struct req_merchant {
     /* 0012 */
 };
 
-// req_guildmaster
-// 244 bytes
-// 6 fields
+// 6 fields 244 bytes
 struct req_guildmaster {
     /* 0000 */ unsigned short guildmaster;
     /* 0002 */ unsigned short me;
@@ -2444,9 +2070,7 @@ struct req_guildmaster {
     /* 0244 */
 };
 
-// reqGuildChestLock
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct reqGuildChestLock {
     /* 0000 */ unsigned short id;
     /* 0002 */ short key;
@@ -2454,26 +2078,20 @@ struct reqGuildChestLock {
     /* 0006 */
 };
 
-// reqGuildName
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct reqGuildName {
     /* 0000 */ int guild_faction;
     /* 0004 */
 };
 
-// reqInsp
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct reqInsp {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short source;
     /* 0004 */
 };
 
-// reqLootermsg
-// 192 bytes
-// 3 fields
+// 3 fields 192 bytes
 struct reqLootermsg {
     /* 0000 */ unsigned char requestor[64];
     /* 0064 */ unsigned char corpse[64];
@@ -2481,9 +2099,7 @@ struct reqLootermsg {
     /* 0192 */
 };
 
-// reqplayed
-// 136 bytes
-// 4 fields
+// 4 fields 136 bytes
 struct reqplayed {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -2492,18 +2108,14 @@ struct reqplayed {
     /* 0136 */
 };
 
-// requestHdr
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct requestHdr {
     /* 0000 */ unsigned short source;
     /* 0002 */ unsigned char type;
     /* 0004 */
 };
 
-// requestMsg
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct requestMsg {
     /* 0000 */ unsigned short source;
     /* 0002 */ unsigned short id;
@@ -2511,17 +2123,13 @@ struct requestMsg {
     /* 0006 */
 };
 
-// rescue
-// 2 bytes
-// 1 fields
+// 1 field 2 bytes
 struct rescue {
     /* 0000 */ unsigned short target;
     /* 0002 */
 };
 
-// resurrectMsg
-// 228 bytes
-// 12 fields
+// 12 fields 228 bytes
 struct resurrectMsg {
     /* 0000 */ unsigned short id;
     /* 0004 */ int zoneid;
@@ -2538,9 +2146,7 @@ struct resurrectMsg {
     /* 0228 */
 };
 
-// retHouseItem
-// 28 bytes
-// 7 fields
+// 7 fields 28 bytes
 struct retHouseItem {
     /* 0000 */ unsigned short id;
     /* 0004 */ long sernbr;
@@ -2552,9 +2158,7 @@ struct retHouseItem {
     /* 0028 */
 };
 
-// retHouseMoney
-// 16 bytes
-// 4 fields
+// 4 fields 16 bytes
 struct retHouseMoney {
     /* 0000 */ unsigned short id;
     /* 0004 */ long sernbr;
@@ -2563,9 +2167,7 @@ struct retHouseMoney {
     /* 0016 */
 };
 
-// reward_MacMsg
-// 48 bytes
-// 10 fields
+// 10 fields 48 bytes
 struct reward_MacMsg {
     /* 0000 */ unsigned short sendId;
     /* 0002 */ unsigned short targetId;
@@ -2580,9 +2182,7 @@ struct reward_MacMsg {
     /* 0048 */
 };
 
-// rpServer
-// 244 bytes
-// 13 fields
+// 13 fields 244 bytes
 struct rpServer {
     /* 0000 */ int rp_active;
     /* 0004 */ int pk_active;
@@ -2600,9 +2200,7 @@ struct rpServer {
     /* 0244 */
 };
 
-// sacrificeMsg
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct sacrificeMsg {
     /* 0000 */ int necroID;
     /* 0004 */ int playerID;
@@ -2610,9 +2208,7 @@ struct sacrificeMsg {
     /* 0012 */
 };
 
-// searchCorpse
-// 132 bytes
-// 3 fields
+// 3 fields 132 bytes
 struct searchCorpse {
     /* 0000 */ char name[64];
     /* 0064 */ char corpsename[64];
@@ -2620,9 +2216,7 @@ struct searchCorpse {
     /* 0132 */
 };
 
-// sell_msg
-// 16 bytes
-// 5 fields
+// 5 fields 16 bytes
 struct sell_msg {
     /* 0000 */ unsigned short merchant;
     /* 0002 */ unsigned short me;
@@ -2632,18 +2226,14 @@ struct sell_msg {
     /* 0016 */
 };
 
-// send_eq
-// 2052 bytes
-// 2 fields
+// 2 fields 2052 bytes
 struct send_eq {
     /* 0000 */ unsigned short me;
     /* 0002 */ char type;
     /* 2052 */
 };
 
-// send_eq2
-// 2060 bytes
-// 4 fields
+// 4 fields 2060 bytes
 struct send_eq2 {
     /* 0000 */ unsigned long ask_price;
     /* 0004 */ int location;
@@ -2652,9 +2242,7 @@ struct send_eq2 {
     /* 2060 */
 };
 
-// sendHdr
-// 116 bytes
-// 5 fields
+// 5 fields 116 bytes
 struct sendHdr {
     /* 0000 */ unsigned short id;
     /* 0002 */ char time[16];
@@ -2664,25 +2252,19 @@ struct sendHdr {
     /* 0116 */
 };
 
-// SendInspectItem
-// 360 bytes
-// 1 fields
+// 1 field 360 bytes
 struct SendInspectItem {
     /* 0000 */ char data[360];
     /* 0360 */
 };
 
-// setDatRateMsg
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct setDatRateMsg {
     /* 0000 */ float datarate;
     /* 0004 */
 };
 
-// setFaction
-// 72 bytes
-// 3 fields
+// 3 fields 72 bytes
 struct setFaction {
     /* 0000 */ char name[64];
     /* 0064 */ int factionnum;
@@ -2690,35 +2272,27 @@ struct setFaction {
     /* 0072 */
 };
 
-// shieldMsg
-// 2 bytes
-// 1 fields
+// 1 field 2 bytes
 struct shieldMsg {
     /* 0000 */ unsigned short target;
     /* 0002 */
 };
 
-// sisaLogMsg
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct sisaLogMsg {
     /* 0000 */ char name[64];
     /* 0064 */ int logActive;
     /* 0068 */
 };
 
-// SkillTmrMsg
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct SkillTmrMsg {
     /* 0000 */ short theSkill;
     /* 0004 */ unsigned long theTimer;
     /* 0008 */
 };
 
-// sMark
-// 456 bytes
-// 7 fields
+// 7 fields 456 bytes
 struct sMark {
     /* 0000 */ char Name[64];
     /* 0064 */ char stationNum[32];
@@ -2730,9 +2304,7 @@ struct sMark {
     /* 0456 */
 };
 
-// snooptext
-// 2242 bytes
-// 4 fields
+// 4 fields 2242 bytes
 struct snooptext {
     /* 0000 */ char snooper[64];
     /* 0064 */ char target[64];
@@ -2741,9 +2313,7 @@ struct snooptext {
     /* 2242 */
 };
 
-// sp_chksum
-// 2056 bytes
-// 4 fields
+// 4 fields 2056 bytes
 struct sp_chksum {
     /* 0000 */ int cksum;
     /* 0004 */ unsigned long size;
@@ -2752,61 +2322,47 @@ struct sp_chksum {
     /* 2056 */
 };
 
-// SpellActivateParticles
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct SpellActivateParticles {
     /* 0000 */ short iID;
     /* 0002 */ short iSpellNumber;
     /* 0004 */
 };
 
-// spellText
-// 514 bytes
-// 1 fields
+// 1 field 514 bytes
 struct spellText {
     /* 0000 */ unsigned short source;
     /* 0514 */
 };
 
-// argumentText
-// 44 bytes
-// 2 fields
+// 2 fields 44 bytes
 struct argumentText {
     /* 0000 */ unsigned short source;
     /* 0004 */ int token;
     /* 0044 */
 };
 
-// SpellWornOffMessage
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct SpellWornOffMessage {
     /* 0000 */ short iID;
     /* 0002 */ short iSpellNumber;
     /* 0004 */
 };
 
-// soulMarkAddMsg
-// 456 bytes
-// 1 fields
+// 1 field 456 bytes
 struct soulMarkAddMsg {
     /* 0000 */ sMark soulMark;
     /* 0456 */
 };
 
-// soulMarkMsg
-// 5536 bytes
-// 2 fields
+// 2 fields 5536 bytes
 struct soulMarkMsg {
     /* 0000 */ char name[64];
     /* 0064 */ sMark soulMarks[12];
     /* 5536 */
 };
 
-// soulMarkReqMsg
-// 192 bytes
-// 4 fields
+// 4 fields 192 bytes
 struct soulMarkReqMsg {
     /* 0000 */ char gmName[64];
     /* 0064 */ char gmstationNum[32];
@@ -2815,18 +2371,14 @@ struct soulMarkReqMsg {
     /* 0192 */
 };
 
-// soundMsg
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct soundMsg {
     /* 0000 */ unsigned short id;
     /* 0002 */ short soundnum;
     /* 0004 */
 };
 
-// start_casting
-// 8 bytes
-// 3 fields
+// 3 fields 8 bytes
 struct start_casting {
     /* 0000 */ unsigned short caster_id;
     /* 0002 */ short spell_nbr;
@@ -2834,9 +2386,7 @@ struct start_casting {
     /* 0008 */
 };
 
-// startRt
-// 16 bytes
-// 4 fields
+// 4 fields 16 bytes
 struct startRt {
     /* 0000 */ char terrain;
     /* 0004 */ BOOL outdoor;
@@ -2845,9 +2395,7 @@ struct startRt {
     /* 0016 */
 };
 
-// statChange
-// 8 bytes
-// 3 fields
+// 3 fields 8 bytes
 struct statChange {
     /* 0000 */ unsigned short id;
     /* 0002 */ short field;
@@ -2855,18 +2403,14 @@ struct statChange {
     /* 0008 */
 };
 
-// statUpdate
-// 15 bytes
-// 2 fields
+// 2 fields 15 bytes
 struct statUpdate {
     /* 0000 */ unsigned short id;
     /* 0002 */ netphysicsinfo physics;
     /* 0015 */
 };
 
-// stealMsg
-// 2060 bytes
-// 6 fields
+// 6 fields 2060 bytes
 struct stealMsg {
     /* 0000 */ unsigned short target;
     /* 0002 */ unsigned short source;
@@ -2877,9 +2421,7 @@ struct stealMsg {
     /* 2060 */
 };
 
-// stell
-// 388 bytes
-// 5 fields
+// 5 fields 388 bytes
 struct stell {
     /* 0000 */ char whom[64];
     /* 0064 */ char tline[256];
@@ -2889,18 +2431,14 @@ struct stell {
     /* 0388 */
 };
 
-// stopcastingmsg
-// 4 bytes
-// 2 fields
+// 2 fields 4 bytes
 struct stopcastingmsg {
     /* 0000 */ short cur_mana;
     /* 0002 */ short spell_nbr;
     /* 0004 */
 };
 
-// submit
-// 76 bytes
-// 4 fields
+// 4 fields 76 bytes
 struct submit {
     /* 0000 */ char name[64];
     /* 0064 */ int race;
@@ -2909,69 +2447,53 @@ struct submit {
     /* 0076 */
 };
 
-// swapSpell
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct swapSpell {
     /* 0000 */ int from;
     /* 0004 */ int to;
     /* 0008 */
 };
 
-// switchName
-// 32 bytes
-// 2 fields
+// 2 fields 32 bytes
 struct switchName {
     /* 0000 */ char name[30];
     /* 0030 */ unsigned short id;
     /* 0032 */
 };
 
-// switchSpell
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct switchSpell {
     /* 0000 */ int switch_id;
     /* 0004 */ int spellnum;
     /* 0008 */
 };
 
-// TargetGroupBuffMsg
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct TargetGroupBuffMsg {
     /* 0000 */ int iValue;
     /* 0004 */
 };
 
-// targetMsg
-// 2 bytes
-// 1 fields
+// 1 field 2 bytes
 struct targetMsg {
     /* 0000 */ unsigned short target;
     /* 0002 */
 };
 
-// tellToggle
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct tellToggle {
     /* 0000 */ char name[64];
     /* 0064 */ int on;
     /* 0068 */
 };
 
-// tgtIDmsg
-// 2 bytes
-// 1 fields
+// 1 field 2 bytes
 struct tgtIDmsg {
     /* 0000 */ unsigned short id;
     /* 0002 */
 };
 
-// tp_coords
-// 24 bytes
-// 6 fields
+// 6 fields 24 bytes
 struct tp_coords {
     /* 0000 */ short index;
     /* 0004 */ float x;
@@ -2982,26 +2504,20 @@ struct tp_coords {
     /* 0024 */
 };
 
-// tp_msg
-// 3076 bytes
-// 2 fields
+// 2 fields 3076 bytes
 struct tp_msg {
     /* 0000 */ short num_coords;
     /* 0004 */ tp_coords tp[128];
     /* 3076 */
 };
 
-// toggleState
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct toggleState {
     /* 0000 */ int state;
     /* 0004 */
 };
 
-// tokenStringMsg
-// 6 bytes
-// 3 fields
+// 3 fields 6 bytes
 struct tokenStringMsg {
     /* 0000 */ short string_token;
     /* 0002 */ short string_color;
@@ -3009,9 +2525,7 @@ struct tokenStringMsg {
     /* 0006 */
 };
 
-// tradeitem
-// 2054 bytes
-// 3 fields
+// 3 fields 2054 bytes
 struct tradeitem {
     /* 0000 */ unsigned short id;
     /* 0002 */ short slot;
@@ -3019,9 +2533,7 @@ struct tradeitem {
     /* 2054 */
 };
 
-// trademoney
-// 8 bytes
-// 3 fields
+// 3 fields 8 bytes
 struct trademoney {
     /* 0000 */ unsigned short id;
     /* 0002 */ unsigned char type;
@@ -3029,9 +2541,7 @@ struct trademoney {
     /* 0008 */
 };
 
-// trainMsg
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct trainMsg {
     /* 0000 */ unsigned short gMasterId;
     /* 0004 */ int language;
@@ -3039,9 +2549,7 @@ struct trainMsg {
     /* 0012 */
 };
 
-// translocateMsg
-// 92 bytes
-// 8 fields
+// 8 fields 92 bytes
 struct translocateMsg {
     /* 0000 */ EQZoneIndex zoneid;
     /* 0004 */ int trans_spell;
@@ -3054,9 +2562,7 @@ struct translocateMsg {
     /* 0092 */
 };
 
-// trapLocation
-// 12 bytes
-// 3 fields
+// 3 fields 12 bytes
 struct trapLocation {
     /* 0000 */ float x;
     /* 0004 */ float y;
@@ -3064,9 +2570,7 @@ struct trapLocation {
     /* 0012 */
 };
 
-// tuneMsg
-// 132 bytes
-// 4 fields
+// 4 fields 132 bytes
 struct tuneMsg {
     /* 0000 */ unsigned short id;
     /* 0002 */ unsigned char bPersist;
@@ -3075,9 +2579,7 @@ struct tuneMsg {
     /* 0132 */
 };
 
-// updateFilters
-// 68 bytes
-// 17 fields
+// 17 fields 68 bytes
 struct updateFilters {
     /* 0000 */ int dmgshields;
     /* 0004 */ int npcspells;
@@ -3099,9 +2601,7 @@ struct updateFilters {
     /* 0068 */
 };
 
-// updateFaceMsg
-// 7 bytes
-// 7 fields
+// 7 fields 7 bytes
 struct updateFaceMsg {
     /* 0000 */ unsigned char HairColor;
     /* 0001 */ unsigned char BeardColor;
@@ -3113,27 +2613,21 @@ struct updateFaceMsg {
     /* 0007 */
 };
 
-// vehicle_xfr
-// 68 bytes
-// 2 fields
+// 2 fields 68 bytes
 struct vehicle_xfr {
     /* 0000 */ char vehicle[64];
     /* 0064 */ EQZoneIndex zoneid;
     /* 0068 */
 };
 
-// VersionWord
-// 2 bytes
-// 2 fields
+// 2 fields 2 bytes
 struct VersionWord {
     /* 0000 */ BYTE minor;
     /* 0001 */ BYTE major;
     /* 0002 */
 };
 
-// vlMsg
-// 272 bytes
-// 5 fields
+// 5 fields 272 bytes
 struct vlMsg {
     /* 0000 */ int negative;
     /* 0004 */ int share;
@@ -3143,9 +2637,7 @@ struct vlMsg {
     /* 0272 */
 };
 
-// weatherChgMsg
-// 16 bytes
-// 4 fields
+// 4 fields 16 bytes
 struct weatherChgMsg {
     /* 0000 */ int rain;
     /* 0004 */ int snow;
@@ -3154,18 +2646,14 @@ struct weatherChgMsg {
     /* 0016 */
 };
 
-// weatherMsg
-// 8 bytes
-// 2 fields
+// 2 fields 8 bytes
 struct weatherMsg {
     /* 0000 */ int type;
     /* 0004 */ int severity;
     /* 0008 */
 };
 
-// wherePlayer
-// 152 bytes
-// 8 fields
+// 8 fields 152 bytes
 struct wherePlayer {
     /* 0000 */ char target[64];
     /* 0064 */ char source[64];
@@ -3178,9 +2666,7 @@ struct wherePlayer {
     /* 0152 */
 };
 
-// who_response
-// 2108 bytes
-// 9 fields
+// 9 fields 2108 bytes
 struct who_response {
     /* 0000 */ DWORD playerSerialNumber;
     /* 0004 */ unsigned short beginTextToken;
@@ -3194,9 +2680,7 @@ struct who_response {
     /* 2108 */
 };
 
-// wldgroupMsg
-// 136 bytes
-// 4 fields
+// 4 fields 136 bytes
 struct wldgroupMsg {
     /* 0000 */ int cmd;
     /* 0004 */ char name[64];
@@ -3205,9 +2689,7 @@ struct wldgroupMsg {
     /* 0136 */
 };
 
-// WorldRemoveGuild
-// 148 bytes
-// 7 fields
+// 7 fields 148 bytes
 struct WorldRemoveGuild {
     /* 0000 */ char source[64];
     /* 0064 */ char target[64];
@@ -3219,9 +2701,7 @@ struct WorldRemoveGuild {
     /* 0148 */
 };
 
-// ww_MacMsg
-// 20 bytes
-// 5 fields
+// 5 fields 20 bytes
 struct ww_MacMsg {
     /* 0000 */ unsigned char iflock;
     /* 0004 */ long platinum;
@@ -3231,27 +2711,21 @@ struct ww_MacMsg {
     /* 0020 */
 };
 
-// zone_address_t
-// 130 bytes
-// 2 fields
+// 2 fields 130 bytes
 struct zone_address_t {
     /* 0000 */ char hostname[128];
     /* 0128 */ short port;
     /* 0130 */
 };
 
-// zonecmdx
-// 260 bytes
-// 2 fields
+// 2 fields 260 bytes
 struct zonecmdx {
     /* 0000 */ char fname[256];
     /* 0256 */ int routenum;
     /* 0260 */
 };
 
-// zoneHeader
-// 572 bytes
-// 45 fields
+// 45 fields 572 bytes
 struct zoneHeader {
     /* 0000 */ char charname[64];
     /* 0064 */ char zone[32];
@@ -3301,17 +2775,13 @@ struct zoneHeader {
     /* 0572 */
 };
 
-// zoneSky
-// 4 bytes
-// 1 fields
+// 1 field 4 bytes
 struct zoneSky {
     /* 0000 */ int skyType;
     /* 0004 */
 };
 
-// zserver_statmsg
-// 76 bytes
-// 4 fields
+// 4 fields 76 bytes
 struct zserver_statmsg {
     /* 0000 */ char playername[64];
     /* 0064 */ int zoneid;
