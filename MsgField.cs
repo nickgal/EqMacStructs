@@ -7,42 +7,15 @@ public struct MsgField
     public string Type;
     public int Count;
     public int Offset;
-    public int Unk;
+    public MsgFieldType FieldType;
+    public int NextFieldOffset;
+    private MsgStruct _msgStruct;
 
-    private static string[] _builtInTypes = [
-        "bool",
-        "byte",
-        "sbyte",
-        "char",
-        "decimal",
-        "double",
-        "float",
-        "int",
-        "uint",
-        "nint",
-        "nuint",
-        "long",
-        "ulong",
-        "short",
-        "ushort",
-    ];
-
-    // https://learn.microsoft.com/en-us/windows/win32/winprog/windows-data-types
-    private static Dictionary<string, string> _typeMap = new()
+    public MsgField(MsgStruct msgStruct)
     {
-        { "unsigned char", "byte" },
-        { "char", "byte"},
-        { "unsigned short", "ushort" },
-        { "unsigned int", "uint" },
-        { "unsigned long", "uint" },
-        { "time_t", "uint"},
-        { "uint32", "uint" },
-        { "EQSerialNumber", "int" }, // guess
-        { "T3D_ACTORINSTANCEPTR", "IntPtr" },
-        { "BOOL", "int" }, // TODO: think through changing this to a C# bool
-        { "BYTE", "byte" },
-        { "DWORD", "uint" },
-    };
+        _msgStruct = msgStruct;
+    }
+
     public override string ToString()
     {
         var sb = new StringBuilder();
@@ -58,41 +31,107 @@ public struct MsgField
     public string ToCSharpString()
     {
         var mappedType = TypeMap(Type, Count);
+        var padding = Padding(mappedType);
+
         var sb = new StringBuilder();
         sb.AppendLine("    /// <remarks>");
-        sb.Append($"    /// Source field: `{Type} {Name}");
+        sb.Append($"    /// Source field: <c>{Type} {Name}");
         if (IncludeCount)
             sb.Append($"[{Count}]");
-        sb.Append(";`\n");
+        sb.Append(";</c>\n");
+        sb.AppendLine($"    /// Offset {Offset}");
         sb.AppendLine("    /// </remarks>");
-        if (mappedType == "byte")
+
+        var unmanagedType = string.Empty;
+
+        // bytes need an explicit unmanaged type
+        if (mappedType == "byte" || mappedType == "sbyte")
         {
-            var unmanagedType = Type == "char" ? "I8" : "U8";
-            var size = Count > 1 ? $", SizeConst = {Count}" : string.Empty;
-            sb.AppendLine($"    [MarshalAs(UnmanagedType.{unmanagedType}{size})]");
+            unmanagedType = Type == "char" ? "I1" : "U1";
         }
-        else if (mappedType == "string")
+
+        if (mappedType == "string")
         {
             sb.AppendLine($"    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = {Count})]");
         }
         else if (IncludeCount)
         {
-            sb.AppendLine($"    [MarshalAs(UnmanagedType.ByValArray, SizeConst = {Count})]");
+            sb.Append("    [MarshalAs(UnmanagedType.ByValArray");
+            if (!string.IsNullOrEmpty(unmanagedType))
+            {
+                sb.Append($", ArraySubType = UnmanagedType.{unmanagedType}");
+            }
+            sb.AppendLine($", SizeConst = {Count})]");
         }
-        sb.Append($"    [FieldOffset({Offset})] public {mappedType} {FieldName()};");
+        else if (!string.IsNullOrEmpty(unmanagedType))
+        {
+            sb.AppendLine($"    [MarshalAs(UnmanagedType.{unmanagedType})]");
+        }
+
+        if (IncludeCount && mappedType != "string")
+        {
+            mappedType += "[]";
+        }
+
+        sb.Append($"    public {mappedType} {FieldName()};");
+
+        switch(padding)
+        {
+            case 1:
+                sb.AppendLine($"\n    [MarshalAs(UnmanagedType.U1)]");
+                sb.Append($"    private byte {PaddingFieldName()};");
+                break;
+            case > 1 and < 4:
+                sb.AppendLine($"\n    [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U1, SizeConst = {padding})]");
+                sb.Append($"    private byte[] {PaddingFieldName()};");
+                break;
+            case > 3:
+                // Generated data edgecase, potential missing or variable length field
+                sb.Append($"\n\n    // FIXME: {padding} bytes missing.");
+                break;
+        }
+
         return sb.ToString();
     }
 
     private string FieldName()
     {
-        if (Name == "Parent_Class")
+        if (FieldType == MsgFieldType.Parent)
         {
             // Create a field name based on parent type
             var str = Type.Replace("EQ_", string.Empty);
             return Regex.Replace(str, @"\d", string.Empty);
         }
 
-        return Name.CleanupString();
+        return I18n.T($"{_msgStruct.Name.StructString()}.{Name.CleanupString()}");
+    }
+
+    private string PaddingFieldName()
+    {
+        string name = FieldName();
+        return $"_{char.ToLower(name[0])}{name[1..]}Padding";
+    }
+
+    // returns how much padding is needed after the field
+    private int Padding(string mappedType)
+    {
+        var mappedSize = TypeMapper.Instance.GetTypeSize(mappedType);
+        if (mappedSize == 0)
+        {
+            return 0;
+        }
+
+        var byteSize = NextFieldOffset - Offset;
+        var mappedByteSize = mappedSize * Count;
+        if (byteSize > mappedByteSize)
+        {
+            var padding = byteSize - mappedByteSize;
+            Console.WriteLine($"    Pad {mappedType} {FieldName()} {padding} bytes ({mappedByteSize} to {byteSize})");
+
+            return padding;
+        }
+
+        return 0;
     }
 
     private static string TypeMap(string type, int count)
@@ -104,21 +143,21 @@ public struct MsgField
 
         if (type.EndsWith(" *") || type.EndsWith(" **"))
         {
-            return "IntPtr";
+            return "int";
         }
 
-        if (_typeMap.TryGetValue(type, out var value))
+        if (TypeMapper.TypeMap.TryGetValue(type, out var value))
         {
             return value;
         }
 
-        if (Array.Exists(_builtInTypes, e => e == type))
+        if (TypeMapper.BuiltInTypes.ContainsKey(type))
         {
             return type;
         }
 
-        return type.CleanupString();
+        return type.StructString();
     }
 
-    private readonly bool IncludeCount => Count > 1 && Name != "Parent_Class";
+    private readonly bool IncludeCount => Count > 1 && FieldType != MsgFieldType.Parent;
 }

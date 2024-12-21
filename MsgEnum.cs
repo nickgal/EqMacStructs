@@ -13,7 +13,7 @@ public struct MsgEnum
         sb.AppendLine("/// <remarks>");
         sb.AppendLine($"/// Source name: `{Name}`");
         sb.AppendLine("/// </remarks>");
-        sb.AppendLine($"public enum {Name.CleanupString()} : {Type}");
+        sb.AppendLine($"public enum {Name.StructString()} : {Type}");
         sb.AppendLine("{");
         if (Members.Count > 0)
         {

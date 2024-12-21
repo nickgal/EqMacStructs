@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+// See https://aka.ms/new-console-template for more information
 using Kaitai;
 
 MsgEnum[] enumTypes = [
@@ -218,7 +218,19 @@ MsgEnum[] enumTypes = [
     new MsgEnum {
         Name = "ZONE_REQ_REASON",
         Type = "int",
-        Members = [] // TODO:
+        Members = new() {
+            { "Teleport", "0" }, // "teleport" - DoTeleport zoneline
+            { "Unknown", "1" }, // takp uses this for #zone
+            { "VehicleTransfer", "2" }, // "vehicle xfr"
+            { "SummonPlayer", "3" }, // "summon player"
+            { "ZoneCommand", "4" }, // "zone command" - msg_translocate without a caster name
+            { "GotoPlayer", "5" }, // "goto player"
+            { "Gate", "6" }, // "gate"
+            { "PortalSpell", "7" }, // "portal spell"
+            { "ZoneCommandWithCaster", "8" }, // "zone command" - msg_translocate with a caster name
+            { "ResurrectPlayer", "9" }, // "resurrect player"
+            { "RepopToHomeAtDeath", "10"}, // "repop to home at death"
+        },
     },
     new MsgEnum {
         Name = "ZONE_REQ_STATUS",
@@ -243,13 +255,15 @@ foreach (var msg in kaitaiMsgs.Msgs)
     for (int i = 0; i < msg.Fields.Count; i++)
     {
         var field = msg.Fields[i];
-        msgStruct.Fields[i] = new MsgField
+
+        msgStruct.Fields[i] = new MsgField(msgStruct)
         {
             Name = field.Name.Str,
             Type = field.Type.Str,
             Count = (int)field.FieldLength,
             Offset = (int)field.FieldPos,
-            Unk = (int)field.Unk3
+            FieldType = (MsgFieldType)field.Unk3,
+            NextFieldOffset = i + 1 == msg.Fields.Count ? msgStruct.Size : (int)msg.Fields[i + 1].FieldPos,
         };
 
         if (!msgStruct.HasEnum  && enumTypeNames.Contains(msgStruct.Fields[i].Type))
@@ -274,6 +288,11 @@ foreach (var msg in kaitaiMsgs.Msgs)
     msgs.Add(msgStruct);
 }
 
+foreach (var msg in msgs)
+{
+    TypeMapper.Instance.AddCustomType(msg.Name.StructString(), msg.Size);
+}
+
 using (StreamWriter outputFile = new("eqmac_net_structs.h"))
 {
     foreach (var msg in msgs)
@@ -285,7 +304,7 @@ using (StreamWriter outputFile = new("eqmac_net_structs.h"))
 Directory.CreateDirectory("csharp/Structs");
 foreach (var msg in msgs)
 {
-    using (StreamWriter outputFile = new($"csharp/Structs/{msg.Name.CleanupString()}.cs"))
+    using (StreamWriter outputFile = new($"csharp/Structs/{msg.Name.StructString()}.cs"))
     {
         outputFile.WriteLine(msg.ToCSharpString());
     }
@@ -294,7 +313,7 @@ foreach (var msg in msgs)
 Directory.CreateDirectory("csharp/Enums");
 foreach (var msgEnum in enumTypes)
 {
-    using (StreamWriter outputFile = new($"csharp/Enums/{msgEnum.Name.CleanupString()}.cs"))
+    using (StreamWriter outputFile = new($"csharp/Enums/{msgEnum.Name.StructString()}.cs"))
     {
         outputFile.WriteLine(msgEnum.ToCSharpString());
     }

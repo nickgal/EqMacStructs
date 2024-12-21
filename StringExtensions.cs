@@ -45,4 +45,10 @@ public static class StringExtensions
 
         return str;
     }
+
+    public static string StructString(this string str)
+    {
+        str = str.CleanupString();
+        return I18n.T(str);
+    }
 }

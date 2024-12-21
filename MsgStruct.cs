@@ -36,10 +36,12 @@ public struct MsgStruct
         }
         sb.AppendLine("\nnamespace EqPackets.Data.Structs;\n");
         sb.AppendLine("/// <remarks>");
-        sb.AppendLine($"/// Source name: `{Name}`");
+        sb.AppendLine($"/// Source name: <c>{Name}</c>");
+        sb.AppendLine($"/// Size: {Size}");
         sb.AppendLine("/// </remarks>");
-        sb.AppendLine($"[StructLayout(LayoutKind.Explicit, Size = {Size}, CharSet = CharSet.Ansi)]");
-        sb.AppendLine($"public struct {Name.CleanupString()}");
+        sb.AppendLine($"[StructLayout(LayoutKind.Sequential, Size = {Size}, CharSet = CharSet.Ansi, Pack = 1)]");
+        sb.AppendLine($"public struct {Name.StructString()}");
+        Console.WriteLine(Name.StructString());
         sb.AppendLine("{");
         for (int i = 0; i < Fields.Length; i++)
         {
