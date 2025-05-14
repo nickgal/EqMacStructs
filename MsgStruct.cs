@@ -28,21 +28,22 @@ public struct MsgStruct
 
     public string ToCSharpString()
     {
+        string indent = "    ";
         var sb = new StringBuilder();
         sb.AppendLine("using System.Runtime.InteropServices;");
         if (HasEnum)
         {
             sb.AppendLine("using EqPackets.Data.Enums;");
         }
-        sb.AppendLine("\nnamespace EqPackets.Data.Structs;\n");
-        sb.AppendLine("/// <remarks>");
-        sb.AppendLine($"/// Source name: <c>{Name}</c>");
-        sb.AppendLine($"/// Size: {Size}");
-        sb.AppendLine("/// </remarks>");
-        sb.AppendLine($"[StructLayout(LayoutKind.Sequential, Size = {Size}, CharSet = CharSet.Ansi, Pack = 1)]");
-        sb.AppendLine($"public struct {Name.StructString()}");
+        sb.AppendLine("\nnamespace EqPackets.Data.Structs\n{");
+        sb.AppendLine($"{indent}/// <remarks>");
+        sb.AppendLine($"{indent}/// Source name: <c>{Name}</c>");
+        sb.AppendLine($"{indent}/// Size: {Size}");
+        sb.AppendLine($"{indent}/// </remarks>");
+        sb.AppendLine($"{indent}[StructLayout(LayoutKind.Sequential, Size = {Size}, CharSet = CharSet.Ansi, Pack = 1)]");
+        sb.AppendLine($"{indent}public struct {Name.StructString()}");
         Console.WriteLine(Name.StructString());
-        sb.AppendLine("{");
+        sb.AppendLine($"{indent}{{");
         for (int i = 0; i < Fields.Length; i++)
         {
             sb.AppendLine(Fields[i].ToCSharpString());
@@ -51,7 +52,8 @@ public struct MsgStruct
                 sb.AppendLine();
             }
         }
-        sb.Append("}");
+        sb.AppendLine($"{indent}}}");
+        sb.Append('}');
         return sb.ToString();
     }
 }

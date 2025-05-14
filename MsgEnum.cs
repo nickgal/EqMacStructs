@@ -8,25 +8,27 @@ public struct MsgEnum
 
     public string ToCSharpString()
     {
+        string indent = "    ";
         var sb = new StringBuilder();
-        sb.AppendLine("namespace EqPackets.Data.Enums;\n");
-        sb.AppendLine("/// <remarks>");
-        sb.AppendLine($"/// Source name: `{Name}`");
-        sb.AppendLine("/// </remarks>");
-        sb.AppendLine($"public enum {Name.StructString()} : {Type}");
-        sb.AppendLine("{");
+        sb.AppendLine("namespace EqPackets.Data.Enums\n{");
+        sb.AppendLine($"{indent}/// <remarks>");
+        sb.AppendLine($"{indent}/// Source name: `{Name}`");
+        sb.AppendLine($"{indent}/// </remarks>");
+        sb.AppendLine($"{indent}public enum {Name.StructString()} : {Type}");
+        sb.AppendLine($"{indent}{{");
         if (Members.Count > 0)
         {
             foreach (var (memberName, memberValue) in Members)
             {
-                sb.AppendLine($"    {memberName} = {memberValue},");
+                sb.AppendLine($"{indent}{indent}{memberName} = {memberValue},");
             }
         }
         else
         {
-            sb.AppendLine("    // TODO:");
+            sb.AppendLine($"{indent}{indent}// TODO:");
         }
-        sb.AppendLine("}");
+        sb.AppendLine($"{indent}}}");
+        sb.Append('}');
         return sb.ToString();
     }
 }

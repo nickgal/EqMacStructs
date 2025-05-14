@@ -30,17 +30,18 @@ public struct MsgField
 
     public string ToCSharpString()
     {
+        string indent = "        ";
         var mappedType = TypeMap(Type, Count);
         var padding = Padding(mappedType);
 
         var sb = new StringBuilder();
-        sb.AppendLine("    /// <remarks>");
-        sb.Append($"    /// Source field: <c>{Type} {Name}");
+        sb.AppendLine($"{indent}/// <remarks>");
+        sb.Append($"{indent}/// Source field: <c>{Type} {Name}");
         if (IncludeCount)
             sb.Append($"[{Count}]");
         sb.Append(";</c>\n");
-        sb.AppendLine($"    /// Offset {Offset}");
-        sb.AppendLine("    /// </remarks>");
+        sb.AppendLine($"{indent}/// Offset {Offset}");
+        sb.AppendLine($"{indent}/// </remarks>");
 
         var unmanagedType = string.Empty;
 
@@ -52,11 +53,11 @@ public struct MsgField
 
         if (mappedType == "string")
         {
-            sb.AppendLine($"    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = {Count})]");
+            sb.AppendLine($"{indent}[MarshalAs(UnmanagedType.ByValTStr, SizeConst = {Count})]");
         }
         else if (IncludeCount)
         {
-            sb.Append("    [MarshalAs(UnmanagedType.ByValArray");
+            sb.Append($"{indent}[MarshalAs(UnmanagedType.ByValArray");
             if (!string.IsNullOrEmpty(unmanagedType))
             {
                 sb.Append($", ArraySubType = UnmanagedType.{unmanagedType}");
@@ -65,7 +66,7 @@ public struct MsgField
         }
         else if (!string.IsNullOrEmpty(unmanagedType))
         {
-            sb.AppendLine($"    [MarshalAs(UnmanagedType.{unmanagedType})]");
+            sb.AppendLine($"{indent}[MarshalAs(UnmanagedType.{unmanagedType})]");
         }
 
         if (IncludeCount && mappedType != "string")
@@ -73,21 +74,21 @@ public struct MsgField
             mappedType += "[]";
         }
 
-        sb.Append($"    public {mappedType} {FieldName()};");
+        sb.Append($"{indent}public {mappedType} {FieldName()};");
 
         switch(padding)
         {
             case 1:
-                sb.AppendLine($"\n    [MarshalAs(UnmanagedType.U1)]");
-                sb.Append($"    private byte {PaddingFieldName()};");
+                sb.AppendLine($"\n{indent}[MarshalAs(UnmanagedType.U1)]");
+                sb.Append($"{indent}private byte {PaddingFieldName()};");
                 break;
             case > 1 and < 4:
-                sb.AppendLine($"\n    [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U1, SizeConst = {padding})]");
-                sb.Append($"    private byte[] {PaddingFieldName()};");
+                sb.AppendLine($"\n{indent}[MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U1, SizeConst = {padding})]");
+                sb.Append($"{indent}private byte[] {PaddingFieldName()};");
                 break;
             case > 3:
                 // Generated data edgecase, potential missing or variable length field
-                sb.Append($"\n\n    // FIXME: {padding} bytes missing.");
+                sb.Append($"\n\n{indent}// FIXME: {padding} bytes missing.");
                 break;
         }
 
