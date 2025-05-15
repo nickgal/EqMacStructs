@@ -10,11 +10,12 @@ public struct MsgEnum
     {
         string indent = "    ";
         var sb = new StringBuilder();
+        string enumType = string.IsNullOrEmpty(Type) ? string.Empty : $" : {Type}";
         sb.AppendLine("namespace EqPackets.Data.Enums\n{");
         sb.AppendLine($"{indent}/// <remarks>");
         sb.AppendLine($"{indent}/// Source name: `{Name}`");
         sb.AppendLine($"{indent}/// </remarks>");
-        sb.AppendLine($"{indent}public enum {Name.StructString()} : {Type}");
+        sb.AppendLine($"{indent}public enum {Name.StructString()}{enumType}");
         sb.AppendLine($"{indent}{{");
         if (Members.Count > 0)
         {

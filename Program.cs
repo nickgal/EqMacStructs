@@ -1,4 +1,4 @@
-// See https://aka.ms/new-console-template for more information
+﻿// See https://aka.ms/new-console-template for more information
 using Kaitai;
 
 MsgEnum[] enumTypes = [
@@ -218,7 +218,8 @@ MsgEnum[] enumTypes = [
     new MsgEnum {
         Name = "ZONE_REQ_REASON",
         Type = "int",
-        Members = new() {
+        Members = new()
+        {
             { "Teleport", "0" }, // "teleport" - DoTeleport zoneline
             { "Unknown", "1" }, // takp uses this for #zone
             { "VehicleTransfer", "2" }, // "vehicle xfr"
@@ -236,7 +237,91 @@ MsgEnum[] enumTypes = [
         Name = "ZONE_REQ_STATUS",
         Type = "int",
         Members = [] // TODO:
-    }
+    },
+    new MsgEnum {
+        Name = "RaceId",
+        Members = new()
+        {
+            { "Human", "1" },
+            { "Barbarian", "2" },
+            { "Erudite", "3" },
+            { "WoodElf", "4" },
+            { "HighElf", "5" },
+            { "DarkElf", "6" },
+            { "HalfElf", "7" },
+            { "Dwarf", "8" },
+            { "Troll", "9" },
+            { "Ogre", "10" },
+            { "Halfling", "11" },
+            { "Gnome", "12" },
+            { "Iksar", "128" },
+            { "VahShir", "130" },
+        }
+    },
+    new MsgEnum {
+        Name = "ClassId",
+        Members = new()
+        {
+            { "Warrior", "1" },
+            { "Cleric", "2" },
+            { "Paladin", "3" },
+            { "Ranger", "4" },
+            { "ShadowKnight", "5" },
+            { "Druid", "6" },
+            { "Monk", "7" },
+            { "Bard", "8" },
+            { "Rogue", "9" },
+            { "Shaman", "10" },
+            { "Necromancer", "11" },
+            { "Wizard", "12" },
+            { "Magician", "13" },
+            { "Enchanter", "14" },
+            { "Beastlord", "15" },
+        }
+    },
+    new MsgEnum {
+        Name = "DeityId",
+        Members = new()
+        {
+            { "Agnostic", "140" },
+            { "Bertoxxulous", "201" },
+            { "BrellSerilis", "202" },
+            { "CazicThule", "203" },
+            { "ErollisiMarr", "204" },
+            { "Bristlebane", "205" },
+            { "Innoruuk", "206" },
+            { "Karana", "207" },
+            { "MithanielMarr", "208" },
+            { "Prexus", "209" },
+            { "Quellious", "210" },
+            { "RallosZek", "211" },
+            { "RodcetNife", "212" },
+            { "SolusekRo", "213" },
+            { "TheTribunal", "214" },
+            { "Tunare", "215" },
+            { "Veeshan", "216" },
+        }
+    },
+    new MsgEnum {
+        Name = "CityId",
+        Members = new()
+        {
+            { "Erudin", "0" },
+            { "Qeynos", "1" },
+            { "Halas", "2" },
+            { "Rivervale", "3" },
+            { "Freeport", "4" },
+            { "Neriak", "5" },
+            { "Grobb", "6" },
+            { "Oggok", "7" },
+            { "Kaladim", "8" },
+            { "Kelethin", "9" },
+            { "Felwithe", "10" },
+            { "AkAnon", "11" },
+            { "Cabilis", "12" },
+            { "VahShirCity", "13" },
+        }
+    },
 ];
 
 var enumTypeNames = enumTypes.Select(t => t.Name);
