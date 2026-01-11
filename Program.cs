@@ -236,7 +236,19 @@ MsgEnum[] enumTypes = [
     new MsgEnum {
         Name = "ZONE_REQ_STATUS",
         Type = "int",
-        Members = [] // TODO:
+        // Guesses based on do_switchzone messages
+        Members = new()
+        {
+            { "FailurePlanarLevel", "-7" },
+            { "FailureExpansionNotOwned", "-6" },
+            { "FailureZoneNotReady", "-5" },
+            // -4
+            { "FailureStorylineLocked", "-3" },
+            { "FailureNonPlayerCharacter", "-2" },
+            // -1
+            { "Failure", "0" },
+            { "Success", "1" },
+        }
     },
     new MsgEnum {
         Name = "RaceId",
