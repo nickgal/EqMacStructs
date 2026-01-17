@@ -7,7 +7,7 @@ public struct MsgStruct
     public MsgField[] Fields;
     public bool HasEnum;
 
-    public override string ToString()
+    public string ToCString(bool includePadding = false)
     {
         var sb = new StringBuilder();
         sb.Append($"// {Fields.Length} field");
@@ -19,9 +19,22 @@ public struct MsgStruct
         sb.AppendLine($"\nstruct {Name} {{");
         foreach (var field in Fields)
         {
-            sb.AppendLine($"    {field.ToString()}");
+            sb.AppendLine($"    {field.ToCString(includePadding)}");
         }
         sb.AppendLine($"    /* {Size.ToString().PadLeft(4, '0')} */");
+        sb.AppendLine("};");
+        return sb.ToString();
+    }
+
+    public string ToImhexString()
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine($"/// Source {Name} ({Size})");
+        sb.AppendLine($"struct {Name.StructString()} {{");
+        foreach(var field in Fields)
+        {
+            sb.AppendLine(field.ToImhexString());
+        }
         sb.AppendLine("};");
         return sb.ToString();
     }

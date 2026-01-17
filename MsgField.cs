@@ -16,7 +16,7 @@ public struct MsgField
         _msgStruct = msgStruct;
     }
 
-    public override string ToString()
+    public string ToCString(bool includePadding = false)
     {
         var sb = new StringBuilder();
         sb.Append($"/* {Offset.ToString().PadLeft(4, '0')} */ ");
@@ -25,6 +25,55 @@ public struct MsgField
             sb.Append($"[{Count}]");
         sb.Append(';');
         // sb.Append($" // {Unk}"); // Append unknown value?
+
+        var padding = Padding(TypeMap(Type, Count));
+        string paddingIndent = "               ";
+        string paddingName = $"_{char.ToLower(Name[0])}{Name[1..]}Padding";
+        switch(padding)
+        {
+            case 1:
+                sb.Append($"\n{paddingIndent}unsigned char {paddingName};");
+                break;
+            case > 1 and < 4:
+                sb.Append($"\n{paddingIndent}unsigned char {paddingName}[{padding}];");
+                break;
+            case > 3:
+                sb.Append($"\n    // FIXME: {padding} bytes missing.");
+                break;
+        }
+
+        return sb.ToString();
+    }
+
+    public string ToImhexString()
+    {
+        string indent = "    ";
+        var sb = new StringBuilder();
+        var mappedType = TypeMap(Type, Count);
+        var padding = Padding(mappedType);
+
+        mappedType = mappedType switch
+        {
+            "byte" => "u8",
+            "ushort" => "u16",
+            "uint" => "u32",
+            "sbyte" => "s8",
+            "short" => "s16",
+            "int" => "s32",
+            "string" => "char",
+            _ => mappedType,
+        };
+
+        sb.Append($"{indent}/* {Offset.ToString().PadLeft(4, '0')} */ ");
+        sb.Append($"{mappedType} {FieldName()}");
+        if (IncludeCount)
+            sb.Append($"[{Count}]");
+        sb.Append(';');
+        if (padding > 0)
+        {
+            sb.Append($"\n{indent}padding[{padding}];");
+        }
+
         return sb.ToString();
     }
 

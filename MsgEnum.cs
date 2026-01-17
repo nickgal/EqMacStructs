@@ -6,6 +6,25 @@ public struct MsgEnum
     public string Type;
     public Dictionary<string, string> Members;
 
+    public string ToImhexString()
+    {
+        var sb = new StringBuilder();
+        var mappedType = Type switch
+        {
+            "int" => "s32",
+            _ => Type
+        };
+        string enumType = string.IsNullOrEmpty(Type) ? string.Empty : $" : {mappedType}";
+        sb.AppendLine($"/// Source name: `{Name}`");
+        sb.AppendLine($"enum {Name.StructString()}{enumType} {{");
+        foreach (var (memberName, memberValue) in Members)
+        {
+            sb.AppendLine($"    {memberName} = {memberValue},");
+        }
+        sb.AppendLine("};");
+        return sb.ToString();
+    }
+
     public string ToCSharpString()
     {
         string indent = "    ";

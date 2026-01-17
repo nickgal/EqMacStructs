@@ -394,7 +394,50 @@ using (StreamWriter outputFile = new("eqmac_net_structs.h"))
 {
     foreach (var msg in msgs)
     {
-        outputFile.WriteLine(msg.ToString());
+        outputFile.WriteLine(msg.ToCString());
+    }
+}
+
+using (StreamWriter outputFile = new("eqmac_padded_net_structs.h"))
+{
+    foreach (var msg in msgs)
+    {
+        outputFile.WriteLine(msg.ToCString(includePadding: true));
+    }
+}
+
+using (StreamWriter outputFile = new("eqmac_structs.pat"))
+{
+    string[] fwdTypes =
+    [
+        "EQCVersionInfo",
+        "EQCharacterData3",
+        "EQItem",
+        "EQPcData4",
+        "NetPhysicsInfo",
+        "PhysicsInfo",
+        "VersionWord",
+        "VlMsg"
+    ];
+    foreach (var fwd in fwdTypes)
+    {
+        outputFile.WriteLine($"using {fwd};");
+    }
+
+    outputFile.WriteLine();
+
+    foreach (var msgEnum in enumTypes)
+    {
+        if (string.IsNullOrEmpty(msgEnum.Type))
+        {
+            continue;
+        }
+        outputFile.WriteLine(msgEnum.ToImhexString());
+    }
+
+    foreach (var msg in msgs)
+    {
+        outputFile.WriteLine(msg.ToImhexString());
     }
 }
 
