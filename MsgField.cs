@@ -26,20 +26,23 @@ public struct MsgField
         sb.Append(';');
         // sb.Append($" // {Unk}"); // Append unknown value?
 
-        var padding = Padding(TypeMap(Type, Count));
-        string paddingIndent = "               ";
-        string paddingName = $"_{char.ToLower(Name[0])}{Name[1..]}Padding";
-        switch(padding)
+        if (includePadding)
         {
-            case 1:
-                sb.Append($"\n{paddingIndent}unsigned char {paddingName};");
-                break;
-            case > 1 and < 4:
-                sb.Append($"\n{paddingIndent}unsigned char {paddingName}[{padding}];");
-                break;
-            case > 3:
-                sb.Append($"\n    // FIXME: {padding} bytes missing.");
-                break;
+            var padding = Padding(TypeMap(Type, Count));
+            string paddingIndent = "               ";
+            string paddingName = $"_{char.ToLower(Name[0])}{Name[1..]}Padding";
+            switch(padding)
+            {
+                case 1:
+                    sb.Append($"\n{paddingIndent}unsigned char {paddingName};");
+                    break;
+                case > 1 and < 4:
+                    sb.Append($"\n{paddingIndent}unsigned char {paddingName}[{padding}];");
+                    break;
+                case > 3:
+                    sb.Append($"\n    // FIXME: {padding} bytes missing.");
+                    break;
+            }
         }
 
         return sb.ToString();
