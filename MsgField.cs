@@ -31,7 +31,7 @@ public struct MsgField
             var padding = Padding(TypeMap(Type, Count));
             string paddingIndent = "               ";
             string paddingName = $"_{char.ToLower(Name[0])}{Name[1..]}Padding";
-            switch(padding)
+            switch (padding)
             {
                 case 1:
                     sb.Append($"\n{paddingIndent}unsigned char {paddingName};");
@@ -86,6 +86,9 @@ public struct MsgField
         var mappedType = TypeMap(Type, Count);
         var padding = Padding(mappedType);
 
+        // HACK: multi string fields
+        if (MultiString) mappedType = "byte";
+
         var sb = new StringBuilder();
         sb.AppendLine($"{indent}/// <remarks>");
         sb.Append($"{indent}/// Source field: <c>{Type} {Name}");
@@ -100,7 +103,7 @@ public struct MsgField
         // bytes need an explicit unmanaged type
         if (mappedType == "byte" || mappedType == "sbyte")
         {
-            unmanagedType = Type == "char" ? "I1" : "U1";
+            unmanagedType = !MultiString && Type == "char" ? "I1" : "U1";
         }
 
         if (mappedType == "string")
@@ -128,7 +131,7 @@ public struct MsgField
 
         sb.Append($"{indent}public {mappedType} {FieldName()};");
 
-        switch(padding)
+        switch (padding)
         {
             case 1:
                 sb.AppendLine($"\n{indent}[MarshalAs(UnmanagedType.U1)]");
@@ -156,7 +159,10 @@ public struct MsgField
             return Regex.Replace(str, @"\d", string.Empty);
         }
 
-        return I18n.T($"{_msgStruct.Name.StructString()}.{Name.CleanupString()}");
+        var fieldName = I18n.T($"{_msgStruct.Name.StructString()}.{Name.CleanupString()}");
+        if (MultiString) fieldName = $"Raw{fieldName}";
+
+        return fieldName;
     }
 
     private string PaddingFieldName()
@@ -186,6 +192,14 @@ public struct MsgField
 
         return 0;
     }
+
+    private readonly bool MultiString => Type == "char" && Count > 1 && MultiStringFields.Contains($"{_msgStruct.Name}.{Name}");
+
+    private static readonly HashSet<string> MultiStringFields = [
+        "EQ_PCData3.groupnames",
+        "EQ_PCData4.groupnames",
+        "LoginMsg.unistring",
+    ];
 
     private static string TypeMap(string type, int count)
     {
