@@ -278,7 +278,7 @@ public static class I18n
         { "Wclass", "WeaponClass" },
         { "WeatherChgMsg", "WeatherChangeMsg" },
         { "WldgroupMsg", "WorldGroupMsg" },
-        { "Wordnum", "WorldNumber" },
+        { "Wordnum", "WordNumber" },
         { "Wordval", "WordValue" },
         { "Zonecontrol", "ZoneControl" },
         { "ZoneHeader.Name", "ZoneLongName" },
